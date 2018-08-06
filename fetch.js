@@ -1,11 +1,10 @@
-const fetch = require("isomorphic-fetch");
+const axios = require("axios");
 
 (async () => {
   const namesArray = new Array();
   const fetchURL = async name => {
-    const response = await fetch(`http://localhost:3000/?name=${name}`);
-    const json = await response.json();
-    return json.name;
+    const response = await axios(`http://localhost:3000/?name=${name}`);
+    return response.data.name;
   };
 
   for (let i = 0; i < 10; i++) {
